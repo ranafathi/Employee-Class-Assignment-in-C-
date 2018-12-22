@@ -6,41 +6,46 @@ using namespace std;
 
 int main()
 {
-	int i, id=0, sal=0, a=0;
+	Employee emp,y;
+	int id = 0, sal = 0, a = 0;
 	string n;
-	Employee emp[2];
+
 	cout << "Please enter employee name, age, ID and salary" << endl;
-	
+
 	// Manager salary >= 5000
 	// Senior salary >= 3000
 	// Junior salary < 3000
 
-	for (i = 0; i < 2; i++)
-	{
-		cout << "Enter Name" << endl;
-		emp[i].setName(n);
-		cout << " Enter ID" << endl;
-		emp[i].setID(id);
-		cout << " Enter Age" << endl;
-		emp[i].setAge(a);
-		cout << " Enter Salary" << endl;
-		emp[i].setSal(sal);
 
-		for ( int j = 0; j < 3; j++)
-	{
-		emp[j].getName();
-		emp[j].getID();
-		emp[j].getAge();
-		emp[j].getSal();
-		cout << "Employee details: " << endl;
-		emp[j].showEmployee();
-		emp[j].showOrder();
-	}
-
-	}
+	cout << "Enter Name" << endl;
+	getline(cin, n);
+	emp.setName(n);
+	cout << "Enter ID" << endl;
+	cin >> id;
+	emp.setID(id);
+	cout << "Enter Age" << endl;
+	cin >> a;
+	emp.setAge(a);
+	cout << "Enter Salary" << endl;
+	cin >> sal;
+	emp.setSal(sal);
 
 	
+	cout << "******Employee details: " << endl;
+	cout << emp.getName() << endl;
+	cout << emp.getID() << endl;
+	cout << emp.getAge() << endl;
+	cout << emp.getSal() << endl;
 
-	return 0;
+
+	cout << "******Using the show employee function:" << endl;
+	emp.showEmployee();
+
+
+	cout << "Employee " << emp.getName() << "  is a  ";
+	emp.showOrder();
+
+
 	system("pause");
+	return 0;
 }
