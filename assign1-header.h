@@ -10,7 +10,7 @@ private:
 	int empID;
 	int age;
 	int salary;
-	int i;
+
 public:
 	Employee() {
 		string name = "  ";
@@ -19,7 +19,14 @@ public:
 		int salary = 0;
 	}//default constructor
 
-	string getName() {return name; }//getter
+	Employee(string n, int id, int a, int sal) {
+		name = n;
+		empID = id;
+		age = a;
+		salary = sal;
+	}//parametirized 
+
+	string getName() { return name; }//getter
 	int getID() { return empID; }//getter
 	int getAge() { return age; }//getter
 	int getSal() { return salary; }//getter
@@ -30,10 +37,10 @@ public:
 	void setSal(int sal) { salary = sal; } //setter
 
 	void showEmployee() {
-		cout << "Name:" << name << endl;
-		cout << "ID:" << empID << endl;
-		cout << "Age:" << age << endl;
-		cout << "Salary:" << salary << endl;
+		cout << "Name: " << name << endl;
+		cout << "ID: " << empID << endl;
+		cout << "Age: " << age << endl;
+		cout << "Salary: " << salary << endl;
 	}
 
 	void showOrder() {
@@ -43,7 +50,7 @@ public:
 		else if (salary >= 3000) {
 			cout << "Senior Employee" << endl;
 		}
-		else if (salary < 3000){
+		else if (salary < 3000) {
 			cout << "Junior Employee" << endl;
 		}
 		else if (salary == 0) { cout << "Salary cannot be 0" << endl; }
@@ -54,6 +61,7 @@ public:
 		Employee res;
 		res.empID = empID + emp.empID;
 		res.salary = salary + emp.salary;
+		return res;
 	}
 
 	friend ostream& operator<<(ostream &output, const Employee &emp1) {
@@ -66,16 +74,19 @@ public:
 		return input;
 	}
 
-	Employee operator++() {
-		Employee temp;
-		temp.i = ++i;
-		return temp;
+	Employee &operator++() {
+		age++;
+		return *this;
 	}
 
 	Employee operator++(int) {
-		Employee temp;
-		temp.i = i++;
-		return temp;
+		Employee e;
+		e = *this;
+		age++;
+		empID++;
+		salary += 1000;
+
+		return *this;
 	}
 
 	bool operator==(Employee a) {
@@ -83,3 +94,4 @@ public:
 	}
 	//end of operators overloaded
 };
+#pragma once
